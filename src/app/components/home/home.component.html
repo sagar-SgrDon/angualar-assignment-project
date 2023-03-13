@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="container">
+    <p class="my-5">
+      <span class="fw-bold custom">List Of Employees</span>
+      <button
+        (click)="openAddUserModal()"
+        class="btn btn-primary float-end"
+        routerLink="/add-employee/new"
+      >
+        Add New User
+      </button>
+    </p>
+  </div>
+  <table class="table">
+    <thead>
+      <tr class="bg-dark text-white text-center">
+        <th>#</th>
+        <th>Image</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>D.O.B</th>
+        <th>Contact Number</th>
+        <th>Salary</th>
+        <th>Address</th>
+        <th>Profession</th>
+        <th>Sport Interest Rate</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employee$ | async" class="text-center">
+        <td>{{ emp.id }}</td>
+        <td><img [src]="image(emp.firstName, emp.lastName)" alt="" /></td>
+        <td>{{ emp.firstName }}</td>
+        <td>{{ emp.lastName }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.age }}</td>
+        <td>{{ emp.dob || " - " }}</td>
+        <td>{{ emp.contactNumber }}</td>
+        <td>{{ emp.salary || " - " | currency : "USD" : true }}</td>
+        <td>{{ emp.address }}</td>
+        <td>{{ emp.profession || " - " }}</td>
+        <td>{{ emp.sportIntRate || " - " }}</td>
+        <td>
+          <a
+            (click)="openEditUserModal()"
+            [routerLink]="['/add-employee', emp.id]"
+            ><fa-icon class="mx-2 custom-icon" [icon]="faEdit"></fa-icon></a
+          ><a (click)="deleteUser(emp.id)"
+            ><fa-icon class="mx-2 custom-icon" [icon]="faTrash"></fa-icon
+          ></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

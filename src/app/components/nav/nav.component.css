@@ -1,0 +1,13 @@
+.navbar{
+    height:70px;
+}
+
+
+.nav-item{
+    margin: 0 6rem;
+    font-size: 1.6rem;
+}
+
+.nav-link:hover{
+    color: aqua;
+}

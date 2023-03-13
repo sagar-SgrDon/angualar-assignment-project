@@ -1,0 +1,12 @@
+.custom{
+    font-size: 1.6rem;
+}
+
+.custom-icon{
+    color: blue;
+    cursor: pointer;
+}
+
+img{
+    border-radius: 100%;
+}

@@ -1,0 +1,28 @@
+<div class="container m-5">
+  <table class="table m-5">
+    <thead>
+      <tr class="bg-black text-white">
+        <th>id</th>
+        <th>Policy Name</th>
+        <th>Salary</th>
+        <th>Claimed Amount</th>
+        <th>Dependents</th>
+        <th>Policy Maximum Amount</th>
+        <th>Balance Left(Anually)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employee$ | async">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.policyName }}</td>
+        <td>{{ emp.salary | currency : "USD" : true }}</td>
+        <td>{{ emp.claimedAmount | currency : "USD" : true }}</td>
+        <td>{{ emp.numberOfDependents }}</td>
+        <td>{{ calPolicyMaxAmount(emp.salary) | currency : "USD" : true }}</td>
+        <td>
+          {{ calBalanceLeft(emp.claimedAmount) | currency : "USD" : true }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
