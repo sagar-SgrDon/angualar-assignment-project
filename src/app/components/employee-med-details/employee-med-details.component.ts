@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { EmployeeMedical } from 'src/app/models/empMedical';
 import { EmpMedService } from 'src/app/services/emp-med.service';
 
@@ -8,7 +9,7 @@ import { EmpMedService } from 'src/app/services/emp-med.service';
   styleUrls: ['./employee-med-details.component.css'],
 })
 export class EmployeeMedDetailsComponent {
-  employee$: any;
+  employee$: Observable<EmployeeMedical[]>;
   policyMaxAmount!: number;
   constructor(private empMedService: EmpMedService) {
     this.employee$ = this.empMedService.displayEmpMedRecords();

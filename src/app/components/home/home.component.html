@@ -4,8 +4,8 @@
       <span class="fw-bold custom">List Of Employees</span>
       <button
         (click)="openAddUserModal()"
+        [routerLink]="['/add-employee/new']"
         class="btn btn-primary float-end"
-        routerLink="/add-employee/new"
       >
         Add New User
       </button>
@@ -20,7 +20,6 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Age</th>
-        <th>D.O.B</th>
         <th>Contact Number</th>
         <th>Salary</th>
         <th>Address</th>
@@ -32,12 +31,11 @@
     <tbody>
       <tr *ngFor="let emp of employee$ | async" class="text-center">
         <td>{{ emp.id }}</td>
-        <td><img [src]="image(emp.firstName, emp.lastName)" alt="" /></td>
+        <td><img [src]="showImage(emp.firstName, emp.lastName)" alt="" /></td>
         <td>{{ emp.firstName }}</td>
         <td>{{ emp.lastName }}</td>
         <td>{{ emp.email }}</td>
         <td>{{ emp.age }}</td>
-        <td>{{ emp.dob || " - " }}</td>
         <td>{{ emp.contactNumber }}</td>
         <td>{{ emp.salary || " - " | currency : "USD" : true }}</td>
         <td>{{ emp.address }}</td>
@@ -45,11 +43,11 @@
         <td>{{ emp.sportIntRate || " - " }}</td>
         <td>
           <a
-            (click)="openEditUserModal()"
-            [routerLink]="['/add-employee', emp.id]"
-            ><fa-icon class="mx-2 custom-icon" [icon]="faEdit"></fa-icon></a
+            (click)="openEditUserModal(emp.id)"
+            [routerLink]="['/add-employee/update']"
+            ><fa-icon class="mx-2 custom-edit" [icon]="faEdit"></fa-icon></a
           ><a (click)="deleteUser(emp.id)"
-            ><fa-icon class="mx-2 custom-icon" [icon]="faTrash"></fa-icon
+            ><fa-icon class="mx-2 custom-delete" [icon]="faTrash"></fa-icon
           ></a>
         </td>
       </tr>

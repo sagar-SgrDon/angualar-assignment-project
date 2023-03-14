@@ -9,10 +9,11 @@ export class EmployeeService {
   url = 'https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001';
 
   url2 = 'https://angular-assignemnt.onrender.com/employee';
+
   constructor(private http: HttpClient) {}
 
   displayEmployee() {
-    return this.http.get(this.url);
+    return this.http.get<Employee[]>(this.url);
   }
 
   addEmployee(data: Employee) {
@@ -20,7 +21,7 @@ export class EmployeeService {
   }
 
   displayNewEmployees() {
-    return this.http.get(this.url2);
+    return this.http.get<Employee[]>(this.url2);
   }
 
   getEmployee(id: string) {
@@ -31,7 +32,7 @@ export class EmployeeService {
     return this.http.delete(this.url2 + `/${id}`);
   }
 
-  updateEmployee(id: any, employee: Employee) {
+  updateEmployee(id: string, employee: Employee) {
     return this.http.put(this.url2 + `/${id}`, employee);
   }
 }

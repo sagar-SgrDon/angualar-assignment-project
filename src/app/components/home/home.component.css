@@ -1,12 +1,17 @@
-.custom{
-    font-size: 1.6rem;
+.custom {
+  font-size: 1.6rem;
 }
 
-.custom-icon{
-    color: blue;
-    cursor: pointer;
+.custom-edit {
+  color: blue;
+  cursor: pointer;
 }
 
-img{
-    border-radius: 100%;
+.custom-delete {
+  color: red;
+  cursor: pointer;
+}
+
+img {
+  border-radius: 100%;
 }

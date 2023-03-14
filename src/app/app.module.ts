@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
-import { ModalService } from './modals/modal.service';
+
 import { EmployeeMedDetailsComponent } from './components/employee-med-details/employee-med-details.component';
 import { EmpMedService } from './services/emp-med.service';
 import { NgChartsModule } from 'ng2-charts';
@@ -40,7 +40,7 @@ import { EmployeeChartComponent } from './components/employee-chart/employee-cha
     BrowserAnimationsModule,
     NgChartsModule,
   ],
-  providers: [EmployeeService, ModalService, NgbActiveModal, EmpMedService],
+  providers: [EmployeeService, NgbActiveModal, EmpMedService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

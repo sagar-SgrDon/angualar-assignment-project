@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class SharedService {
   addUser: boolean = false;
   editUser: boolean = false;
+  id!: string;
+  employeeData: any = {};
 
   constructor() {}
 }

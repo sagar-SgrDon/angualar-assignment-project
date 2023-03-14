@@ -19,7 +19,7 @@ export class EmployeeChartComponent implements OnInit {
       if (!this.chartData) return;
       for (let i = 0; i < this.chartData.length; i++) {
         let data = this.chartData[i];
-        this.labelData.push(data.firstName + data.lastName);
+        this.labelData.push(data.firstName + ' ' + data.lastName);
         this.realData.push(data.salary);
       }
       this.renderChart(this.labelData, this.realData, 'bar', 'barchart');
@@ -28,14 +28,15 @@ export class EmployeeChartComponent implements OnInit {
     });
   }
 
-  renderChart(labelData: any, realData: any, type: any, id: any) {
+  renderChart(labelData: string[], realData: number[], type: any, id: any) {
     return new Chart(id, {
       type: type,
+
       data: {
         labels: labelData,
         datasets: [
           {
-            label: '# of Salary',
+            label: 'Salary',
             data: realData,
             backgroundColor: [
               'green',
