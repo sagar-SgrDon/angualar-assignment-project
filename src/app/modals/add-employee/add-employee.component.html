@@ -1,0 +1,212 @@
+<div *ngIf="isUserAdded" class="alert alert-success my-3" role="alert">
+  Employee Added successfully
+</div>
+<div *ngIf="isUserUpdated" class="alert alert-success my-3" role="alert">
+  Employee Updated successfully
+</div>
+
+<div class="modal-header">
+  <h4 *ngIf="shared.addUser" class="modal-title">Add User</h4>
+  <h4 *ngIf="shared.editUser" class="modal-title">Edit User</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <form #f="ngForm">
+    <div class="form-group my-1">
+      <label for="firstName">First Name</label>
+      <input
+        required
+        [(ngModel)]="employeeData.firstName"
+        placeholder="First Name"
+        #firstName="ngModel"
+        name="firstName"
+        type="text"
+        class="form-control"
+      />
+      <div
+        class="text text-danger"
+        *ngIf="firstName.touched && firstName.invalid"
+      >
+        *First Name is required.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="lastName">Last Name</label
+      ><input
+        type="text"
+        required
+        [(ngModel)]="employeeData.lastName"
+        placeholder="Last Name"
+        #lastName="ngModel"
+        name="lastName"
+        class="form-control"
+      />
+      <div
+        class="text text-danger"
+        *ngIf="lastName.touched && lastName.invalid"
+      >
+        *Last Name is required.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="address">Address</label
+      ><input
+        type="text"
+        required
+        [(ngModel)]="employeeData.address"
+        placeholder="Address"
+        #address="ngModel"
+        name="address"
+        class="form-control"
+      />
+      <div class="text text-danger" *ngIf="address.touched && address.invalid">
+        *Address is required.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="age">Age</label
+      ><input
+        required
+        min="1"
+        [(ngModel)]="employeeData.age"
+        placeholder="Your Age"
+        #age="ngModel"
+        name="age"
+        type="number"
+        class="form-control"
+      />
+      <div class="text text-danger" *ngIf="age.touched && age.invalid">
+        <div class="text text-danger" *ngIf="age.hasError('required')">
+          *Age is required.
+        </div>
+        <div class="text text-danger" *ngIf="age.hasError('min')">
+          Age should be greater than 0.
+        </div>
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="email">Email</label
+      ><input
+        required
+        [(ngModel)]="employeeData.email"
+        placeholder="your email"
+        #email="ngModel"
+        name="email"
+        type="text"
+        class="form-control"
+      />
+      <div class="text text-danger" *ngIf="email.touched && email.invalid">
+        <div class="text text-danger" *ngIf="email.hasError('required')">
+          *Email is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="contactNumber">Contact Number</label
+      ><input
+        required
+        [(ngModel)]="employeeData.contactNumber"
+        placeholder="Enter your Mobile Number"
+        #contactNumber="ngModel"
+        name="contactNumber"
+        type="number"
+        class="form-control"
+      />
+      <div
+        class="text text-danger"
+        *ngIf="contactNumber.touched && contactNumber.invalid"
+      >
+        *Please enter your Contact Number.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="salary">salary</label
+      ><input
+        required
+        [(ngModel)]="employeeData.salary"
+        placeholder="salary"
+        #salary="ngModel"
+        name="salary"
+        type="number"
+        class="form-control"
+      />
+      <div class="text text-danger" *ngIf="salary.touched && salary.invalid">
+        *Please enter your Salary.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="profession">Profession</label
+      ><input
+        required
+        [(ngModel)]="employeeData.profession"
+        placeholder="Profession"
+        #profession="ngModel"
+        name="profession"
+        type="text"
+        class="form-control"
+      />
+      <div
+        class="text text-danger"
+        *ngIf="profession.touched && profession.invalid"
+      >
+        *Please enter your profession.
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="sportIntRate">Sport Interest Rate</label>
+      <div>
+        <select
+          class="form-select"
+          required
+          [(ngModel)]="employeeData.sportIntRate"
+          #sportIntRate="ngModel"
+          name="sportIntRate"
+        >
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <div
+          class="text text-danger"
+          *ngIf="sportIntRate.touched && sportIntRate.invalid"
+        >
+          *Please Select the rate.
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    routerLink=""
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button>
+  <button
+    *ngIf="shared.addUser"
+    type="submit"
+    (click)="addUser(f.value)"
+    class="btn btn-primary"
+    [disabled]="f.invalid"
+  >
+    Submit
+  </button>
+  <button
+    *ngIf="shared.editUser"
+    type="submit"
+    (click)="updateUser(f.value)"
+    class="btn btn-primary"
+    [disabled]="f.invalid"
+  >
+    Update
+  </button>
+</div>
