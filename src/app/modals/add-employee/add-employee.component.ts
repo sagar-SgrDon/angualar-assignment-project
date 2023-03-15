@@ -1,19 +1,19 @@
-import { Component, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Employee } from "src/app/models/employee";
-import { EmployeeService } from "src/app/services/employee.service";
-import { SharedService } from "src/app/services/shared.service";
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Employee } from 'src/app/models/employee';
+import { EmployeeService } from 'src/app/services/employee.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
-  selector: "app-add-employee",
-  templateUrl: "./add-employee.component.html",
-  styleUrls: ["./add-employee.component.css"],
+  selector: 'app-add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.css'],
 })
 export class AddEmployeeComponent {
-  @ViewChild("f") form!: NgForm;
+  @ViewChild('f') form!: NgForm;
   faArrowDown = faArrowDown;
   isUserAdded = false;
   isUserUpdated = false;
@@ -36,7 +36,7 @@ export class AddEmployeeComponent {
         setTimeout(() => {
           this.modalService.dismissAll();
           this.isUserAdded = false;
-          this.router.navigate([""]);
+          this.router.navigate(['']);
         }, 1500);
       }
     });
@@ -51,7 +51,7 @@ export class AddEmployeeComponent {
         setTimeout(() => {
           this.modalService.dismissAll();
           this.isUserUpdated = false;
-          this.router.navigate([""]);
+          this.router.navigate(['']);
         }, 1500);
       }
     });

@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   openAddUserModal() {
+    this.shared.employeeData = {};
     this.shared.editUser = false;
     this.shared.addUser = true;
     this.openModal();
